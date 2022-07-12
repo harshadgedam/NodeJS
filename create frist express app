@@ -1,0 +1,16 @@
+const express= require('express');
+const app = express();
+const port =800;
+app.get('/',(req,res)=>{
+    res.status(200).send('Allah hu Akhbar')
+});
+app.post('/',(req,res)=>{
+    res.status(200).send('Allah hu Akhbar post')
+});
+app.post('/about',(req,res)=>{
+    res.status(404).send('Not found')
+});
+
+app.listen(port,()=>{
+    console.log(`This Application running on port ${port}`);
+});
