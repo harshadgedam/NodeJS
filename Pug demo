@@ -1,0 +1,52 @@
+const { application } = require('express');
+const express= require('express');
+const app = express();
+const path = require('path')
+const port =800;
+
+//To keep static file content here. ye folder me jo javascript ka code rahega wo ham chahenge k hamre alg alg html files me use karenge.static file yaha daal denge aur templetes me use karenge like css file
+app.use('/static',express.static('static')) //static ye folder he . /static ye url he
+// To set the tempelete engine as pug
+app.set('view engine', 'pug')
+
+//set the views directory
+app.set('views', path.join(__dirname,'views'))
+
+app.get('/demo',(req,res)=>{
+    res.status(200).render('demo',{title:'my webiste',message:'hello i\'m harshad i am using pug'})
+});
+app.get('/',(req,res)=>{
+    res.status(200).send('Allah hu Akhbar')
+});
+app.post('/',(req,res)=>{
+    res.status(200).send('Allah hu Akhbar post')
+});
+app.get('/about',(req,res)=>{
+    res.status(200).send('This is about page')
+})
+app.post('/about',(req,res)=>{
+    res.status(200).send('This is about page')
+})
+app.post('/This',(req,res)=>{
+    res.status(404).send('Not found')
+});
+
+app.listen(port,()=>{
+    console.log(`This Application running on port ${port}`);
+});
+
+
+
+
+
+
+//in views folder demo.pug
+html
+  head
+    title= title
+  body
+    h1= message
+    
+    
+    
+    
